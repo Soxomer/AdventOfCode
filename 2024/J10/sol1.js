@@ -22,9 +22,9 @@ function findNext(current, lastPos) {
 
 function getAllPaths(current, path, paths) {
   if (current === 9)
+    // avoid different paths with same destination and same start
     if (!paths.some((p) => p[p.length - 1].toString() === path[path.length - 1].toString())
     ) {
-      // avoid different paths with same destination and same start
       paths.push(path);
       return;
     }
@@ -45,14 +45,14 @@ for (let i = 0; i < m.length; i++) {
     if (m[i][j] === 0) {
       let paths = [];
       getAllPaths(0, [[i, j]], paths);
-      allPaths.push([[i, j], paths.length]);
+      allPaths.push([[i, j], paths]);
     }
   }
 }
 
 let sum=0
 for (const path of allPaths) {
-    sum+=path[1]
+    sum+=path[1].length
 }
 
 console.log(sum);

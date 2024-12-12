@@ -42,14 +42,14 @@ for (let i = 0; i < m.length; i++) {
     if (m[i][j] === 0) {
       let paths = [];
       getAllPaths(0, [[i, j]], paths);
-      allPaths.push([[i, j], paths.length]);
+      allPaths.push([[i, j], paths]);
     }
   }
 }
 
 let sum = 0;
 for (const path of allPaths) {
-  sum += path[1];
+  sum += path[1].length;
 }
 
 console.log(sum);
